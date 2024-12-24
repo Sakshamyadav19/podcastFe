@@ -5,6 +5,8 @@ import Landing from "./components/landing";
 import SignInPage from "./components/signin";
 import Home from "./components/home";
 import SignUpPage from "./components/signup";
+import VideoStream from "./components/videocam";
+import { SocketProvider } from "./socketcontext";
 
 const ProtectedHome = () => {
   const navigate = useNavigate();
@@ -35,10 +37,12 @@ const App = () => {
   }
 
   return (
-    <Routes>
+    <SocketProvider>
+      <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/home/:id" element={<VideoStream />} />
       <Route
         path="/home"
         element={
@@ -53,6 +57,7 @@ const App = () => {
         }
       />
     </Routes>
+    </SocketProvider>
   );
 };
 
