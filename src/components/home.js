@@ -10,15 +10,12 @@ const Home = () => {
     const navigate = useNavigate();
 
     const handleStartCall = () => {
-        console.log(socket.id,user._id)
         socket.emit("create-room",{ userId: socket.id }, (roomId) => {
-            console.log(`Room created with ID: ${roomId}`);
             navigate(`/home/${roomId}`);
         });
     };
 
     const handleJoinCall = (e) => {
-        console.log(user)
         e.preventDefault();
         socket.emit('join-room', { roomId: roomIdInput }, (response) => {
             if (response.success) {
@@ -29,7 +26,10 @@ const Home = () => {
                 setRoomError(response.message);
             }
         });
+          
     };
+
+     
 
     return (
         <div className="min-h-screen bg-gray-100">

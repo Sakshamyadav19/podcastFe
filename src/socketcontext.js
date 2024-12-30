@@ -11,6 +11,7 @@ export const useSocket = () => {
 export const SocketProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         const newSocket = io("http://localhost:3001");
@@ -38,10 +39,16 @@ export const SocketProvider = ({ children }) => {
                 peer.disconnect();
             };
         });
+
+        const handleGetUsers = (roomUsers) => {
+            setUsers(roomUsers);
+        };
+    
+        // newSocket.on("get-users", handleGetUsers);
     }, []);
 
     return (
-        <SocketContext.Provider value={{ socket, user }}>
+        <SocketContext.Provider value={{ socket, user,users }}>
             {children}
         </SocketContext.Provider>
     );
