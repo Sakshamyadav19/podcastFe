@@ -14,7 +14,7 @@ export const SocketProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const newSocket = io("http://localhost:3001");
+        const newSocket = io("https://tourmaline-ubiquitous-spider.gltich.me");
         setSocket(newSocket);
 
         newSocket.on("connect", () => {

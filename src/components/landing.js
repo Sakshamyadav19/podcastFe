@@ -51,7 +51,7 @@ const Landing = () => {
       </div>
 
       <div className="w-1/2 bg-gradient-to-br from-blue-500 via-purple-200 to-pink-300 flex items-center justify-center p-8">
-        
+        <img src="dalle.webp"/>
       </div>
     </div>
       );
